@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Халевич Владислав</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo" data-i18n="header_name">Халевич Владислав</div>
+      <nav class="nav">
+        <a href="#home" class="nav-link" data-i18n="nav_home">Главная</a>
+        <a href="#skills" class="nav-link" data-i18n="nav_skills">Навыки</a>
+        <a href="#portfolio" class="nav-link" data-i18n="nav_portfolio">Портфолио</a>
+        <a href="#contacts" class="nav-link" data-i18n="nav_contacts">Контакты</a>
+      </nav>
+      <div class="lang-wrapper">
+        <button class="lang-toggle" id="langToggle" aria-label="Change language">
+          <img src="assets/icons/lang.svg" alt="" class="lang-icon" />
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button class="lang-menu-item" data-lang="ru">Русский</button>
+          <button class="lang-menu-item" data-lang="en">English</button>
+        </div>
+      </div>
+      <button class="burger" id="burger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="section section-hero">
+      <div class="container hero-grid">
+        <div class="hero-photo-wrap">
+          <img src="assets/images/hero-image.svg" alt="Photo" class="hero-photo" />
+        </div>
+        <div class="hero-content">
+          <h1 class="section-title" data-i18n="personal_title">Личная информация</h1>
+
+          <div class="tabs" role="tablist">
+            <button class="tab active" data-tab="education" data-i18n="tab_education">Образование</button>
+            <button class="tab" data-tab="location" data-i18n="tab_location">Локация</button>
+            <button class="tab" data-tab="schedule" data-i18n="tab_schedule">График</button>
+            <button class="tab" data-tab="languages" data-i18n="tab_languages">Языки</button>
+          </div>
+
+          <div class="tab-panels">
+            <div class="tab-panel active" data-panel="education">
+              <p class="card-text" data-i18n="education_text">
+                4 курс Белорусского государственного университета информатики и радиоэлектроники.
+                Факультет: компьютерного проектирования.
+                Специальность: программируемые мобильные системы.
+              </p>
+              <p class="card-text accent" data-i18n="education_graduation">
+                Год окончания: 2026
+              </p>
+            </div>
+
+            <div class="tab-panel" data-panel="location">
+              <p class="card-text" data-i18n="location_text">
+                Минск, Беларусь. Готов к переезду и удалённому формату работы.
+              </p>
+            </div>
+
+            <div class="tab-panel" data-panel="schedule">
+              <p class="card-text" data-i18n="schedule_text">
+                Частичная занятость / стажировка с возможностью перехода на полный рабочий день.
+              </p>
+            </div>
+
+            <div class="tab-panel" data-panel="languages">
+              <p class="card-text" data-i18n="languages_text">
+                Русский — родной. Английский — B1 (чтение документации, коммуникация в команде).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section section-skills">
+      <div class="container">
+        <h2 class="section-title" data-i18n="skills_title">Навыки</h2>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <h3 class="skill-title" data-i18n="skills_frontend_title">Frontend‑разработка</h3>
+            <ul class="skill-list">
+              <li>JavaScript (ES6+)</li>
+              <li>TypeScript</li>
+              <li>React</li>
+              <li>Next.js</li>
+              <li>Bootstrap</li>
+              <li>HTML5</li>
+              <li>CSS3</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3 class="skill-title" data-i18n="skills_backend_title">Backend‑разработка</h3>
+            <ul class="skill-list">
+              <li>Node.js</li>
+              <li>Next.js</li>
+              <li>Zod</li>
+              <li>Java (Spring Framework)</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3 class="skill-title" data-i18n="skills_db_title">Базы данных и ORM</h3>
+            <ul class="skill-list">
+              <li>MySQL</li>
+              <li>SQLite</li>
+              <li>PostgreSQL</li>
+              <li>Prisma</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3 class="skill-title" data-i18n="skills_tools_title">Инструменты и окружение</h3>
+            <ul class="skill-list">
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>VS Code</li>
+              <li>IntelliJ IDEA</li>
+              <li>Postman</li>
+              <li>Android Studio</li>
+              <li>Expo</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3 class="skill-title" data-i18n="skills_network_title">Сети и протоколы</h3>
+            <ul class="skill-list">
+              <li>HTTP/HTTPS</li>
+              <li>UDP</li>
+              <li>TCP/IP</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3 class="skill-title" data-i18n="skills_design_title">Дизайн и прототипирование</h3>
+            <ul class="skill-list">
+              <li>Figma</li>
+              <li>Penpot</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="section section-portfolio">
+      <div class="container">
+        <h2 class="section-title" data-i18n="portfolio_title">Портфолио</h2>
+        <div class="portfolio-intro-card">
+          <p class="section-subtitle portfolio-intro-text" data-i18n="portfolio_subtitle">
+            Здесь представлены несколько примеров для наглядности. Исходный код этих и других проектов можно найти в моём
+            GitHub‑репозитории.
+          </p>
+          <a href="https://github.com/Ksaiko-Vlad" target="_blank" rel="noopener noreferrer" class="portfolio-intro-btn">
+            <span data-i18n="portfolio_intro_btn">Открыть</span>
+            <img src="assets/icons/open.svg" alt="" />
+          </a>
+        </div>
+
+        <div class="portfolio-highlight">
+          <h3 class="portfolio-project-title" data-i18n="portfolio_project_title">
+            Сайт с ERP‑системой для мебельного бизнеса
+          </h3>
+          <a href="https://github.com/Ksaiko-Vlad/WebSofa2" target="_blank" rel="noopener noreferrer"
+            class="portfolio-link">
+            https://github.com/Ksaiko-Vlad/WebSofa2
+          </a>
+          <p class="portfolio-text" data-i18n="portfolio_project_text">
+            Для клиентов реализован удобный каталог с возможностью выбора и оплаты товаров через интегрированный
+            платёжный сервис.
+            Для сотрудников создана полноценная система управления с разграничением по ролям. Руководитель видит всю
+            цепочку прозрачно — от
+            поступления заявки до отгрузки готового изделия, с контролем на каждом этапе.
+          </p>
+
+          <div class="portfolio-screens">
+            <button type="button" class="portfolio-screen" aria-label="Open portfolio preview"></button>
+            <button type="button" class="portfolio-screen" aria-label="Open portfolio preview"></button>
+          </div>
+        </div>
+
+        <div class="portfolio-extra" id="portfolioExtra">
+          <div class="portfolio-highlight">
+            <h3 class="portfolio-project-title">Заготовка проекта 2</h3>
+            <a href="#" class="portfolio-link">https://github.com/your-profile/project-2</a>
+            <p class="portfolio-text">
+              Краткое описание проекта. Что реализовано, какие технологии использованы и какую задачу решает проект.
+            </p>
+            <div class="portfolio-screens">
+              <button type="button" class="portfolio-screen" aria-label="Open portfolio preview"></button>
+              <button type="button" class="portfolio-screen" aria-label="Open portfolio preview"></button>
+            </div>
+          </div>
+
+          <div class="portfolio-highlight">
+            <h3 class="portfolio-project-title">Заготовка проекта 3</h3>
+            <a href="#" class="portfolio-link">https://github.com/your-profile/project-3</a>
+            <p class="portfolio-text">
+              Краткое описание проекта. Здесь можешь добавить информацию о функционале, роли в команде и результате.
+            </p>
+            <div class="portfolio-screens">
+              <button type="button" class="portfolio-screen" aria-label="Open portfolio preview"></button>
+              <button type="button" class="portfolio-screen" aria-label="Open portfolio preview"></button>
+            </div>
+          </div>
+
+          <div class="portfolio-highlight">
+            <h3 class="portfolio-project-title">Заготовка проекта 4</h3>
+            <a href="#" class="portfolio-link">https://github.com/your-profile/project-4</a>
+            <p class="portfolio-text">
+              Краткое описание проекта. Заполни стек, архитектуру, ключевые фичи и ссылку на репозиторий.
+            </p>
+            <div class="portfolio-screens">
+              <button type="button" class="portfolio-screen" aria-label="Open portfolio preview"></button>
+              <button type="button" class="portfolio-screen" aria-label="Open portfolio preview"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-more">
+          <button id="portfolioMoreBtn" class="btn-secondary" data-i18n="portfolio_more_btn">Показать другие</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="portfolio-modal" id="portfolioModal" aria-hidden="true">
+      <div class="portfolio-modal-backdrop" data-portfolio-close></div>
+      <div class="portfolio-modal-content" role="dialog" aria-modal="true" aria-label="Portfolio preview">
+        <button type="button" class="portfolio-modal-close" data-portfolio-close aria-label="Close preview">×</button>
+        <div class="portfolio-modal-canvas"></div>
+      </div>
+    </div>
+
+    <!-- Contacts -->
+    <section id="contacts" class="section section-contacts">
+      <div class="container contacts-grid">
+        <article class="contact-card contact-github">
+          <div class="contact-card-header">
+            <span class="contact-icon"></span>
+            <h3 class="contact-title">GitHub</h3>
+          </div>
+          <ul class="contact-list">
+            <li data-i18n="github_item_examples">Примеры</li>
+            <li data-i18n="github_item_source">Исходники</li>
+            <li data-i18n="github_item_pet">Pet‑проекты</li>
+          </ul>
+          <a href="https://github.com/Ksaiko-Vlad" target="_blank" rel="noopener noreferrer" class="btn-primary"
+            data-i18n="github_button">
+            Посетить
+          </a>
+        </article>
+
+        <article class="contact-card">
+          <h3 class="contact-title" data-i18n="contact_phone_label">Телефон</h3>
+          <a href="tel:+375291805930" class="contact-main">+375 29 180-95-30</a>
+        </article>
+
+        <article class="contact-card">
+          <h3 class="contact-title">Email</h3>
+          <a href="mailto:khalevich@gmail.com" class="contact-main">khalevich@gmail.com</a>
+        </article>
+
+        <article class="contact-card">
+          <h3 class="contact-title">Telegram</h3>
+          <a href="https://t.me/Ksaiko" target="_blank" rel="noopener noreferrer" class="contact-main">@Ksaiko</a>
+        </article>
+
+        <article class="contact-card">
+          <h3 class="contact-title">VK</h3>
+          <a href="https://vk.com/adinson" target="_blank" rel="noopener noreferrer" class="contact-main">@adinson</a>
+        </article>
+
+        <article class="contact-card contact-status">
+          <p class="card-text" data-i18n="status_text">
+            В активном поиске команды для роста и развития в сфере IT.
+          </p>
+          <span class="status-pill" data-i18n="status_pill">Открыт к предложениям</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-copy">
+        © 2026 <span data-i18n="footer_name">Халевич Владислав</span>
+      </span>
+      <span class="footer-tags" data-i18n="footer_tags">
+        Ответственный · Коммуникабельный · Пунктуален · Внимателен к деталям · Открыт к обучению новым технологиям
+      </span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
