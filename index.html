@@ -235,7 +235,7 @@
         </div>
 
         <div class="portfolio-more">
-          <button id="portfolioMoreBtn" class="btn-secondary" data-i18n="portfolio_more_btn">Показать другие</button>
+          <button id="portfolioMoreBtn" class="btn-secondary">Показать другие</button>
         </div>
       </div>
     </section>
@@ -251,48 +251,80 @@
     <!-- Contacts -->
     <section id="contacts" class="section section-contacts">
       <div class="container contacts-grid">
-        <article class="contact-card contact-github">
-          <div class="contact-card-header">
-            <span class="contact-icon"></span>
-            <h3 class="contact-title">GitHub</h3>
-          </div>
-          <ul class="contact-list">
-            <li data-i18n="github_item_examples">Примеры</li>
-            <li data-i18n="github_item_source">Исходники</li>
-            <li data-i18n="github_item_pet">Pet‑проекты</li>
-          </ul>
-          <a href="https://github.com/Ksaiko-Vlad" target="_blank" rel="noopener noreferrer" class="btn-primary"
-            data-i18n="github_button">
-            Посетить
+        <div class="contacts-left">
+          <article class="contact-card contact-github">
+            <div class="contact-card-header">
+              <img src="assets/icons/github.svg" alt="" class="contact-icon" />
+              <h3 class="contact-title">GitHub</h3>
+            </div>
+            <ul class="contact-list">
+              <li data-i18n="github_item_examples">Примеры</li>
+              <li data-i18n="github_item_source">Исходники</li>
+              <li data-i18n="github_item_pet">Pet‑проекты</li>
+            </ul>
+            <a href="https://github.com/Ksaiko-Vlad" target="_blank" rel="noopener noreferrer" class="btn-primary"
+              data-i18n="github_button">
+              Посетить
+            </a>
+          </article>
+
+          <article class="contact-card contact-status">
+            <img src="assets/icons/hh.svg" alt="" class="contact-status-icon" />
+            <p class="card-text" data-i18n="status_text">
+              В активном поиске команды для роста и развития в сфере IT.
+            </p>
+            <a href="https://hh.ru/resume/20dc57ccff1006f7490039ed1f684e516d4238" target="_blank" rel="noopener noreferrer" class="btn-primary"
+              data-i18n="hh_button">
+              Посетить
+            </a>
+          </article>
+        </div>
+
+        <div class="contacts-right">
+          <a href="tel:+375291805930" class="contact-card contact-link">
+            <div class="contact-info">
+              <div class="contact-title-row">
+                <img src="assets/icons/phone.svg" alt="" class="contact-icon" />
+                <h3 class="contact-title" data-i18n="contact_phone_label">Телефон</h3>
+              </div>
+              <span class="contact-value">+375 29 180-95-30</span>
+            </div>
+            <img src="assets/icons/arrow.svg" alt="" class="contact-arrow" />
           </a>
-        </article>
 
-        <article class="contact-card">
-          <h3 class="contact-title" data-i18n="contact_phone_label">Телефон</h3>
-          <a href="tel:+375291805930" class="contact-main">+375 29 180-95-30</a>
-        </article>
+          <a href="mailto:khalevich@gmail.com" class="contact-card contact-link">
+            <div class="contact-info">
+              <div class="contact-title-row">
+                <img src="assets/icons/email.svg" alt="" class="contact-icon" />
+                <h3 class="contact-title">Email</h3>
+              </div>
+              <span class="contact-value">khalevich@gmail.com</span>
+            </div>
+            <img src="assets/icons/arrow.svg" alt="" class="contact-arrow" />
+          </a>
 
-        <article class="contact-card">
-          <h3 class="contact-title">Email</h3>
-          <a href="mailto:khalevich@gmail.com" class="contact-main">khalevich@gmail.com</a>
-        </article>
+          <a href="https://t.me/Ksaiko" target="_blank" rel="noopener noreferrer" class="contact-card contact-link">
+            <div class="contact-info">
+              <div class="contact-title-row">
+                <img src="assets/icons/telegram.svg" alt="" class="contact-icon" />
+                <h3 class="contact-title">Telegram</h3>
+              </div>
+              <span class="contact-value">@Ksaiko</span>
+            </div>
+            <img src="assets/icons/arrow.svg" alt="" class="contact-arrow" />
+          </a>
 
-        <article class="contact-card">
-          <h3 class="contact-title">Telegram</h3>
-          <a href="https://t.me/Ksaiko" target="_blank" rel="noopener noreferrer" class="contact-main">@Ksaiko</a>
-        </article>
-
-        <article class="contact-card">
-          <h3 class="contact-title">VK</h3>
-          <a href="https://vk.com/adinson" target="_blank" rel="noopener noreferrer" class="contact-main">@adinson</a>
-        </article>
-
-        <article class="contact-card contact-status">
-          <p class="card-text" data-i18n="status_text">
-            В активном поиске команды для роста и развития в сфере IT.
-          </p>
-          <span class="status-pill" data-i18n="status_pill">Открыт к предложениям</span>
-        </article>
+          <a href="https://vk.com/adinson" target="_blank" rel="noopener noreferrer" class="contact-card contact-link">
+            <div class="contact-info">
+              <div class="contact-title-row">
+                <img src="assets/icons/vk.svg" alt="" class="contact-icon" />
+                <h3 class="contact-title">VK</h3>
+              </div>
+              <span class="contact-value">@adinson</span>
+            </div>
+            <img src="assets/icons/arrow.svg" alt="" class="contact-arrow" />
+          </a>
+        </div>
       </div>
     </section>
   </main>

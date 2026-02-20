@@ -1,6 +1,9 @@
 const STORAGE_KEY = "cv_lang";
 const DEFAULT_LANG = "ru";
 
+let globalTranslations = null;
+let globalGetLang = () => DEFAULT_LANG;
+
 async function loadTranslations() {
   const response = await fetch("translations.json", { cache: "no-store" });
   if (!response.ok) {
@@ -193,9 +196,25 @@ function setupPortfolioMore() {
   const extra = document.getElementById("portfolioExtra");
   if (!button || !extra) return;
 
+  function updateButtonText() {
+    if (!globalTranslations) {
+      button.textContent = extra.classList.contains("open") ? "Скрыть другие" : "Показать другие";
+      return;
+    }
+    const isOpen = extra.classList.contains("open");
+    const lang = globalGetLang();
+    const dict = globalTranslations[lang] || globalTranslations[DEFAULT_LANG];
+    if (dict.portfolio_hide_btn && dict.portfolio_more_btn) {
+      button.textContent = isOpen ? dict.portfolio_hide_btn : dict.portfolio_more_btn;
+    }
+  }
+
   button.addEventListener("click", () => {
     extra.classList.toggle("open");
+    updateButtonText();
   });
+
+  window.addEventListener("langchange", updateButtonText);
 }
 
 function setupPortfolioModal() {
@@ -250,9 +269,18 @@ async function setupLanguageSwitcher() {
     localStorage.setItem(STORAGE_KEY, currentLang);
     applyTranslations(currentLang, translations);
     window.dispatchEvent(new Event("resize"));
+    window.dispatchEvent(new Event("langchange"));
   }
 
+  function getLang() {
+    return currentLang;
+  }
+
+  globalTranslations = translations;
+  globalGetLang = getLang;
+
   setLang(currentLang);
+  window.dispatchEvent(new Event("langchange"));
 
   toggle.addEventListener("click", (event) => {
     event.stopPropagation();
