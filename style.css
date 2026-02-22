@@ -638,7 +638,6 @@ border-radius: 10px;
   height: 300px;
   border-radius: 4px;
   background-color: #c8c8c8;
-  background-image: url("assets/images/try.png");
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -710,20 +709,30 @@ border-radius: 10px;
   position: fixed;
   inset: 0;
   z-index: 1000;
-  display: none;
-}
-
-.portfolio-modal.open {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.portfolio-modal.open {
+  opacity: 1;
+  visibility: visible;
 }
 
 .portfolio-modal-backdrop {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.portfolio-modal.open .portfolio-modal-backdrop {
+  opacity: 1;
 }
 
 .portfolio-modal-content {
@@ -734,6 +743,14 @@ border-radius: 10px;
   background: #f0f0f0;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
   z-index: 1;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.portfolio-modal.open .portfolio-modal-content {
+  transform: scale(1);
+  opacity: 1;
 }
 
 .portfolio-modal-close {
@@ -747,6 +764,16 @@ border-radius: 10px;
   background: rgba(0, 0, 0, 0.55);
   color: #ffffff;
   font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.portfolio-modal-close:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 0 0 2px rgba(255, 239, 140, 0.55),
+    0 0 16px rgba(255, 239, 140, 0.55),
+    0 0 32px rgba(255, 239, 140, 0.3);
   line-height: 1;
   cursor: pointer;
 }
@@ -756,7 +783,6 @@ border-radius: 10px;
   aspect-ratio: 16 / 10;
   border-radius: 8px;
   background-color: #dddddd;
-  background-image: url("assets/images/try.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

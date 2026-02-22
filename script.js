@@ -219,11 +219,13 @@ function setupPortfolioMore() {
 
 function setupPortfolioModal() {
   const modal = document.getElementById("portfolioModal");
+  const canvas = modal?.querySelector(".portfolio-modal-canvas");
   const triggers = document.querySelectorAll(".portfolio-screen");
   const closeNodes = document.querySelectorAll("[data-portfolio-close]");
-  if (!modal || !triggers.length) return;
+  if (!modal || !canvas || !triggers.length) return;
 
-  function openModal() {
+  function openModal(imageUrl) {
+    canvas.style.backgroundImage = `url('${imageUrl}')`;
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
@@ -236,7 +238,12 @@ function setupPortfolioModal() {
   }
 
   triggers.forEach((item) => {
-    item.addEventListener("click", openModal);
+    item.addEventListener("click", () => {
+      const style = item.style.backgroundImage;
+      const urlMatch = style.match(/url\(['"]?([^'"]+)['"]?\)/);
+      const imageUrl = urlMatch ? urlMatch[1] : "";
+      openModal(imageUrl);
+    });
   });
 
   closeNodes.forEach((node) => {
