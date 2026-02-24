@@ -308,6 +308,39 @@ async function setupLanguageSwitcher() {
   });
 }
 
+function setupCopyToClipboard(buttonId, dataAttr) {
+  const button = document.getElementById(buttonId);
+  if (!button) return;
+
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const value = button.dataset[dataAttr];
+    
+    const textarea = document.createElement("textarea");
+    textarea.value = value;
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    
+    try {
+      document.execCommand("copy");
+      const valueEl = button.querySelector(".contact-value");
+      const originalText = valueEl.textContent;
+      valueEl.textContent = "Скопировано";
+      setTimeout(() => {
+        valueEl.textContent = originalText;
+      }, 1500);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+    
+    document.body.removeChild(textarea);
+  });
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
   setupTabs();
   setupSmoothScroll();
@@ -317,6 +350,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setupPortfolioMore();
   setupPortfolioModal();
   setupNavActiveOnScroll();
+  setupCopyToClipboard("copyPhone", "phone");
+  setupCopyToClipboard("copyEmail", "email");
   setupLanguageSwitcher().catch((err) => {
     console.error(err);
   });
