@@ -8,6 +8,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 body {
@@ -500,6 +501,14 @@ a {
     transition: none;
     animation: none;
   }
+
+  .section-portfolio,
+  .section-experience,
+  .section-contacts {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .skill-title {
@@ -557,6 +566,14 @@ a {
 /* Experience Timeline */
 .section-experience {
   background: #f8f8f8;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-experience.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .timeline {
@@ -659,6 +676,14 @@ a {
 /* Portfolio */
 .section-portfolio {
   background: #ffffff;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-portfolio.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .portfolio-intro-card {
@@ -814,9 +839,9 @@ border-radius: 10px;
 }
 
 .portfolio-screen {
-  height: 300px;
+  height: 260px;
   border-radius: 4px;
-  background-color: #c8c8c8;
+  background-color: transparent;
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -871,11 +896,10 @@ border-radius: 10px;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.55s ease, opacity 0.4s ease;
+  transition: max-height 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.5s ease;
 }
 
 .portfolio-extra.open {
-  max-height: 2500px;
   opacity: 1;
 }
 
@@ -916,10 +940,10 @@ border-radius: 10px;
 
 .portfolio-modal-content {
   position: relative;
-  width: min(980px, calc(100vw - 40px));
-  padding: 14px;
-  border-radius: 10px;
-  background: #f0f0f0;
+  width: min(980px, calc(100vw - 20px));
+  padding: 6px;
+  border-radius: 8px;
+  background: #e0e0e0;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
   z-index: 1;
   transform: scale(0.9);
@@ -959,10 +983,10 @@ border-radius: 10px;
 
 .portfolio-modal-canvas {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   border-radius: 8px;
-  background-color: #dddddd;
-  background-size: contain;
+  background-color: transparent;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -971,6 +995,14 @@ border-radius: 10px;
 .section-contacts {
   background: #f4f4f4;
   padding-bottom: 60px;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-contacts.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .contacts-grid {
@@ -1164,9 +1196,31 @@ border-radius: 10px;
 /* Responsive */
 @media (max-width: 1024px) {
 
+  .container {
+    width: min(1120px, 100% - 48px);
+  }
+
   .section-hero .hero-grid {
     grid-template-columns: minmax(0, 1fr);
     max-width: none;
+    gap: 40px;
+  }
+
+  .hero-photo-wrap::after {
+    display: none;
+  }
+
+  .section-hero .hero-content {
+    max-width: 540px;
+    margin-inline: auto;
+  }
+
+  .section-hero .section-title {
+    text-align: center;
+  }
+
+  .section-hero .tabs {
+    justify-content: center;
   }
 
   .hero-photo-wrap {
@@ -1200,6 +1254,9 @@ border-radius: 10px;
 }
 
 @media (max-width: 768px) {
+  .container {
+    width: min(1120px, 100% - 32px);
+  }
   .header-inner {
     padding-block: 12px;
   }
@@ -1249,20 +1306,47 @@ border-radius: 10px;
   }
 
   .portfolio-screen {
-    height: 240px;
+    height: 190px;
   }
 
   .portfolio-modal-content {
     width: 100%;
-    padding: 12px;
+    padding: 6px;
   }
 
   .portfolio-modal-canvas {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
   }
 
   .contacts-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Stack tooltip: лучше влезает по ширине экрана */
+  .stack-tooltip-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .stack-tooltip {
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, 10px);
+    max-width: calc(100vw - 40px);
+  }
+
+  .stack-tooltip-wrap:hover .stack-tooltip {
+    transform: translate(-50%, 0);
+  }
+
+  .stack-tooltip::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Табам убираем некрасивый системный фокус-контур */
+  .tab:focus-visible {
+    outline: none;
   }
 
   .footer-inner {

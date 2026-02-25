@@ -191,10 +191,39 @@ function setupHeroReveal() {
   }, 1000);
 }
 
+function setupSectionsReveal() {
+  const targets = document.querySelectorAll(
+    ".section-portfolio, .section-experience, .section-contacts"
+  );
+  if (!targets.length) return;
+
+  if (!("IntersectionObserver" in window)) {
+    targets.forEach((section) => section.classList.add("revealed"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.25 }
+  );
+
+  targets.forEach((section) => observer.observe(section));
+}
+
 function setupPortfolioMore() {
   const button = document.getElementById("portfolioMoreBtn");
   const extra = document.getElementById("portfolioExtra");
   if (!button || !extra) return;
+
+  // стартовое значение для плавного открытия
+  extra.style.maxHeight = "0px";
 
   function updateButtonText() {
     if (!globalTranslations) {
@@ -210,7 +239,24 @@ function setupPortfolioMore() {
   }
 
   button.addEventListener("click", () => {
-    extra.classList.toggle("open");
+    const isOpen = extra.classList.contains("open");
+
+    if (isOpen) {
+      // плавное закрытие: зафиксировать текущую высоту, затем анимировать к 0
+      const currentHeight = extra.scrollHeight;
+      extra.style.maxHeight = `${currentHeight}px`;
+      // следующий кадр — анимируем к нулю
+      requestAnimationFrame(() => {
+        extra.classList.remove("open");
+        extra.style.maxHeight = "0px";
+      });
+    } else {
+      // открытие: сразу задаём нужную высоту и включаем класс
+      const targetHeight = extra.scrollHeight;
+      extra.classList.add("open");
+      extra.style.maxHeight = `${targetHeight}px`;
+    }
+
     updateButtonText();
   });
 
@@ -347,6 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupBurger();
   setupHeroReveal();
   setupSkillsReveal();
+  setupSectionsReveal();
   setupPortfolioMore();
   setupPortfolioModal();
   setupNavActiveOnScroll();
