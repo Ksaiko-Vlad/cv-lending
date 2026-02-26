@@ -225,12 +225,15 @@ function setupPortfolioMore() {
   // стартовое значение для плавного открытия
   extra.style.maxHeight = "0px";
 
-  function updateButtonText() {
+  function updateButtonText(nextIsOpen) {
+    const isOpen =
+      typeof nextIsOpen === "boolean" ? nextIsOpen : extra.classList.contains("open");
+
     if (!globalTranslations) {
-      button.textContent = extra.classList.contains("open") ? "Скрыть другие" : "Показать другие";
+      button.textContent = isOpen ? "Скрыть другие" : "Показать другие";
       return;
     }
-    const isOpen = extra.classList.contains("open");
+
     const lang = globalGetLang();
     const dict = globalTranslations[lang] || globalTranslations[DEFAULT_LANG];
     if (dict.portfolio_hide_btn && dict.portfolio_more_btn) {
@@ -240,16 +243,24 @@ function setupPortfolioMore() {
 
   button.addEventListener("click", () => {
     const isOpen = extra.classList.contains("open");
+    const willOpen = !isOpen;
 
     if (isOpen) {
-      // плавное закрытие: зафиксировать текущую высоту, затем анимировать к 0
-      const currentHeight = extra.scrollHeight;
-      extra.style.maxHeight = `${currentHeight}px`;
-      // следующий кадр — анимируем к нулю
-      requestAnimationFrame(() => {
-        extra.classList.remove("open");
-        extra.style.maxHeight = "0px";
-      });
+      // сначала прокручиваем к началу портфолио
+      const portfolioSection = document.getElementById("portfolio");
+      if (portfolioSection) {
+        portfolioSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      // даём скроллу время завершиться, затем плавно сворачиваем блок
+      window.setTimeout(() => {
+        const currentHeight = extra.scrollHeight;
+        extra.style.maxHeight = `${currentHeight}px`;
+        requestAnimationFrame(() => {
+          extra.classList.remove("open");
+          extra.style.maxHeight = "0px";
+        });
+      }, 600);
     } else {
       // открытие: сразу задаём нужную высоту и включаем класс
       const targetHeight = extra.scrollHeight;
@@ -257,10 +268,13 @@ function setupPortfolioMore() {
       extra.style.maxHeight = `${targetHeight}px`;
     }
 
-    updateButtonText();
+    updateButtonText(willOpen);
   });
 
-  window.addEventListener("langchange", updateButtonText);
+  // начальное состояние текста
+  updateButtonText(extra.classList.contains("open"));
+
+  window.addEventListener("langchange", () => updateButtonText());
 }
 
 function setupPortfolioModal() {

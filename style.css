@@ -109,8 +109,10 @@ a {
 
 /* Header */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 20;
   background: rgba(240, 240, 240, 0.92);
   border-bottom: 1px solid #d0d0d0;
@@ -240,7 +242,7 @@ a {
 
 /* Hero */
 .section-hero {
-  padding: 110px 0;
+  padding: 140px 0;
 }
 
 .section-hero .hero-grid {
@@ -1177,7 +1179,7 @@ border-radius: 10px;
 .site-footer {
   background: #f4f4f4;
   border-top: 3px solid #ffffff;
-  padding: 32px 0 16px;
+  padding: 24px 0 24px;
 }
 
 .footer-inner {
@@ -1254,6 +1256,10 @@ border-radius: 10px;
 }
 
 @media (max-width: 768px) {
+  body {
+    padding-top: 64px;
+  }
+
   .container {
     width: min(1120px, 100% - 32px);
   }
